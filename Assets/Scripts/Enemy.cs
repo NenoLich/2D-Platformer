@@ -16,13 +16,12 @@ public class Enemy : MonoBehaviour
 	private SpriteRenderer ren;			// Reference to the sprite renderer.
 	private Transform frontCheck;		// Reference to the position of the gameobject used for checking if something is in front.
 	private bool dead = false;			// Whether or not the enemy is dead.
-	private Score score;				// Reference to the Score script.
+	private Score score;                // Reference to the Score script.
 
-	
 	void Awake()
 	{
 		// Setting up the references.
-		ren = transform.Find("body").GetComponent<SpriteRenderer>();
+		ren = GetComponent<SpriteRenderer>();
 		frontCheck = transform.Find("frontCheck").transform;
 		score = GameObject.Find("Score").GetComponent<Score>();
 	}
@@ -38,7 +37,7 @@ public class Enemy : MonoBehaviour
 			// If any of the colliders is an Obstacle...
 			if(c.tag == "Obstacle")
 			{
-				// ... Flip the enemy and stop checking the other colliders.
+                // ... Flip the enemy and stop checking the other colliders.
 				Flip ();
 				break;
 			}

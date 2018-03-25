@@ -37,7 +37,8 @@ public class CameraFollow : MonoBehaviour
 
 	void FixedUpdate ()
 	{
-		TrackPlayer();
+
+        TrackPlayer();
 	}
 	
 	
@@ -52,16 +53,17 @@ public class CameraFollow : MonoBehaviour
 			// ... the target x coordinate should be a Lerp between the camera's current x position and the player's current x position.
 			targetX = Mathf.Lerp(transform.position.x, player.position.x, xSmooth * Time.deltaTime);
 
-		// If the player has moved beyond the y margin...
-		if(CheckYMargin())
+        // If the player has moved beyond the y margin...
+        if (CheckYMargin())
 			// ... the target y coordinate should be a Lerp between the camera's current y position and the player's current y position.
 			targetY = Mathf.Lerp(transform.position.y, player.position.y, ySmooth * Time.deltaTime);
 
-		// The target x and y coordinates should not be larger than the maximum or smaller than the minimum.
-		targetX = Mathf.Clamp(targetX, minXAndY.x, maxXAndY.x);
+        // The target x and y coordinates should not be larger than the maximum or smaller than the minimum.
+        targetX = Mathf.Clamp(targetX, minXAndY.x, maxXAndY.x);
 		targetY = Mathf.Clamp(targetY, minXAndY.y, maxXAndY.y);
 
 		// Set the camera's position to the target position with the same z component.
 		transform.position = new Vector3(targetX, targetY, transform.position.z);
-	}
+
+    }
 }
