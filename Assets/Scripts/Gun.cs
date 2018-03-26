@@ -14,8 +14,8 @@ public class Gun : MonoBehaviour
 	void Awake()
 	{
 		// Setting up the references.
-		anim = transform.root.gameObject.GetComponent<Animator>();
-		playerCtrl = transform.root.GetComponent<PlayerControl>();
+		anim = GetComponent<Animator>();
+		playerCtrl = GetComponent<PlayerControl>();
 	}
 
 
@@ -42,5 +42,21 @@ public class Gun : MonoBehaviour
 				bulletInstance.velocity = new Vector2(-speed, 0);
 			}
 		}
-	}
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            // ... set the animator Shoot trigger parameter and play the audioclip.
+            anim.SetTrigger("Melee");
+
+            RaycastHit raycastHit = new RaycastHit();
+            // If the player is facing right...
+
+            float posX = playerCtrl.facingRight ? transform.position.x + 2f : transform.position.x - 2f;
+            Physics.Linecast(transform.position,
+                    new Vector3(posX, transform.position.y, transform.position.z),
+                    out raycastHit, LayerMask.NameToLayer("Enemies"));
+
+            raycastHit.collider.GetComponent<Enemy>().Hurt();
+        }
+    }
 }
