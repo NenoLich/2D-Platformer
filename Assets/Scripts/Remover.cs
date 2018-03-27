@@ -15,10 +15,11 @@ public class Remover : MonoBehaviour
 			// .. stop the camera tracking the player
 			GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().enabled = false;
 
-			// .. stop the Health Bar following the player
-			if(GameObject.FindGameObjectWithTag("HealthBar").activeSelf)
+            GameObject HpBar = GameObject.FindGameObjectWithTag("HealthBar");
+
+            if (HpBar!=null && HpBar.activeSelf)
 			{
-				GameObject.FindGameObjectWithTag("HealthBar").SetActive(false);
+                HpBar.SetActive(false);
 			}
 
 			// ... instantiate the splash where the player falls in.

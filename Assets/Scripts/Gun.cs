@@ -45,18 +45,16 @@ public class Gun : MonoBehaviour
 
         if (Input.GetButtonDown("Fire2"))
         {
-            // ... set the animator Shoot trigger parameter and play the audioclip.
             anim.SetTrigger("Melee");
 
-            RaycastHit raycastHit = new RaycastHit();
-            // If the player is facing right...
+            RaycastHit2D[] raycastHits = Physics2D.LinecastAll(transform.position,
+                   new Vector3(playerCtrl.facingRight ? transform.position.x + 1f : transform.position.x - 1f,
+                   transform.position.y, transform.position.z), LayerMask.GetMask("Enemies"));
 
-            float posX = playerCtrl.facingRight ? transform.position.x + 2f : transform.position.x - 2f;
-            Physics.Linecast(transform.position,
-                    new Vector3(posX, transform.position.y, transform.position.z),
-                    out raycastHit, LayerMask.NameToLayer("Enemies"));
-
-            raycastHit.collider.GetComponent<Enemy>().Hurt();
+            foreach (RaycastHit2D raycastHit in raycastHits)
+            {
+                raycastHit.collider.GetComponent<Enemy>().Hurt();
+            }
         }
     }
 }

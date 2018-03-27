@@ -85,10 +85,7 @@ public class PlayerControl : MonoBehaviour
 
         else
         {
-            if (h > 0)
-                anim.SetBool("Run", true);
-            else
-                anim.SetBool("Run", false);
+            anim.SetBool("Run", h > 0);
         }
     }
 
