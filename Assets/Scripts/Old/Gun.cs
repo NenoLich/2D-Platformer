@@ -5,6 +5,7 @@ public class Gun : MonoBehaviour
 {
 	public Rigidbody2D rocket;				// Prefab of the rocket.
 	public float speed = 20f;				// The speed the rocket will fire at.
+    public AudioClip shootClip;
 
 
 	private PlayerControl playerCtrl;		// Reference to the PlayerControl script.
@@ -26,20 +27,23 @@ public class Gun : MonoBehaviour
 		{
 			// ... set the animator Shoot trigger parameter and play the audioclip.
 			anim.SetTrigger("Shoot");
-			GetComponent<AudioSource>().Play();
 
-			// If the player is facing right...
-			if(playerCtrl.facingRight)
+            AudioSource audio = GetComponent<AudioSource>();
+            audio.clip = shootClip;
+            audio.Play();
+
+            // If the player is facing right...
+            if (playerCtrl.facingRight)
 			{
 				// ... instantiate the rocket facing right and set it's velocity to the right. 
-				Rigidbody2D bulletInstance = Instantiate(rocket, transform.position, Quaternion.Euler(new Vector3(0,0,0))) as Rigidbody2D;
-				bulletInstance.velocity = new Vector2(speed, 0);
+				Rigidbody2D bulletInstance = Instantiate(rocket, transform.position, Quaternion.Euler(new Vector3(0,0,-90f))) as Rigidbody2D;
+				//bulletInstance.velocity = new Vector2(speed, 0);
 			}
 			else
 			{
 				// Otherwise instantiate the rocket facing left and set it's velocity to the left.
-				Rigidbody2D bulletInstance = Instantiate(rocket, transform.position, Quaternion.Euler(new Vector3(0, 180f, 0))) as Rigidbody2D;
-				bulletInstance.velocity = new Vector2(-speed, 0);
+				Rigidbody2D bulletInstance = Instantiate(rocket, transform.position, Quaternion.Euler(new Vector3(0, 0, 90f))) as Rigidbody2D;
+				//bulletInstance.velocity = new Vector2(-speed, 0);
 			}
 		}
 

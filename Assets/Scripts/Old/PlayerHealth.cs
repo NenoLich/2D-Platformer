@@ -40,7 +40,8 @@ public class PlayerHealth : MonoBehaviour
 				if(health > 0f)
 				{
 					// ... take damage and reset the lastHitTime.
-					TakeDamage(col.transform); 
+					TakeDamage(col.transform);
+                    col.gameObject.GetComponent<Enemy>().Attack();
 					lastHitTime = Time.time; 
 				}
 				// If the player doesn't have health, do some stuff, let him fall into the river to reload the level.

@@ -26,8 +26,12 @@ public class PlayerControl : MonoBehaviour
 
     void Awake()
     {
-        // Setting up references.
-        groundCheck = transform.Find("groundCheck");
+        foreach (Transform child in transform)
+        {
+            if (child.name == "groundCheck")
+                groundCheck = child;
+        }
+
         anim = GetComponent<Animator>();
     }
 
