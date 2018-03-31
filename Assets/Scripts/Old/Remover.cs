@@ -26,8 +26,7 @@ public class Remover : MonoBehaviour
 			//Instantiate(splash, col.transform.position, transform.rotation);
 			// ... destroy the player.
 			Destroy (col.gameObject);
-			// ... reload the level.
-			StartCoroutine("ReloadGame");
+            StartCoroutine("ReloadGame");
 		}
 		else
 		{
@@ -40,7 +39,7 @@ public class Remover : MonoBehaviour
 	}
 
 	IEnumerator ReloadGame()
-	{			
+	{
 		// ... pause briefly
 		yield return new WaitForSeconds(1);
 		// ... and then reload the level.

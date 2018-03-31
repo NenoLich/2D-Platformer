@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     private Transform frontCheck;
     private bool dead = false;
     private Score score;
-    private Transform player;
+    private GameObject player;
     private bool isMovingRight;
     private float distanceToTarget;
     private Animator anim;
@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
         ren = GetComponent<SpriteRenderer>();
         frontCheck = transform.Find("frontCheck").transform;
         score = GameObject.Find("Score").GetComponent<Score>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player");
         anim = GetComponent<Animator>();
     }
 
@@ -37,7 +37,7 @@ public class Enemy : MonoBehaviour
         if (dead || player==null)
             return;
 
-        distanceToTarget = transform.position.x - player.position.x;
+        distanceToTarget = transform.position.x - player.transform.position.x;
         anim.SetFloat("distanceToTarget", distanceToTarget);
 
         if (Mathf.Abs(distanceToTarget) > 0.7f)

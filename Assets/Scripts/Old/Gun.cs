@@ -8,7 +8,7 @@ public class Gun : MonoBehaviour
     public AudioClip shootClip;
 
 
-	private PlayerControl playerCtrl;		// Reference to the PlayerControl script.
+	private PlayerController playerCtrl;		// Reference to the PlayerControl script.
 	private Animator anim;					// Reference to the Animator component.
 
 
@@ -16,7 +16,7 @@ public class Gun : MonoBehaviour
 	{
 		// Setting up the references.
 		anim = GetComponent<Animator>();
-		playerCtrl = GetComponent<PlayerControl>();
+		playerCtrl = GetComponent<PlayerController>();
 	}
 
 
