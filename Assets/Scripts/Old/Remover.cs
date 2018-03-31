@@ -13,7 +13,7 @@ public class Remover : MonoBehaviour
 		if(col.gameObject.tag == "Player")
 		{
 			// .. stop the camera tracking the player
-			GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().enabled = false;
+			GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>().enabled = false;
 
             GameObject HpBar = GameObject.FindGameObjectWithTag("HealthBar");
 

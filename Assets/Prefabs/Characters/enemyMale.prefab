@@ -19,13 +19,13 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4647866140878392}
-  - component: {fileID: 61405865119177990}
   - component: {fileID: 50304859027194912}
   - component: {fileID: 114529181280398766}
   - component: {fileID: 58701242034241348}
   - component: {fileID: 212792991518920554}
   - component: {fileID: 95826757191950976}
   - component: {fileID: 82608511797522940}
+  - component: {fileID: 68396852639374240}
   m_Layer: 10
   m_Name: enemyMale
   m_TagString: Enemy
@@ -96,7 +96,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1171169998463700}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -30.58996, y: -1.3608829, z: -9.9313965}
+  m_LocalPosition: {x: -16.96151, y: 9.887119, z: -9.9313965}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1.4970795}
   m_Children:
   - {fileID: 4561170673069928}
@@ -119,7 +119,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 536367617801acd41965bfc3ccb1dab4, type: 2}
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -139,31 +139,29 @@ CircleCollider2D:
   m_Offset: {x: -0.3861457, y: -1.1791303}
   serializedVersion: 2
   m_Radius: 1.5180453
---- !u!61 &61405865119177990
-BoxCollider2D:
+--- !u!68 &68396852639374240
+EdgeCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1171169998463700}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 536367617801acd41965bfc3ccb1dab4, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.029705524, y: 0.38792467}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.3, y: 5.19}
-    newSize: {x: 5.21, y: 5.76}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.75846, y: 3.2789898}
+  m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
+  m_Points:
+  - {x: -1.6356659, y: -0.51433146}
+  - {x: -1.072855, y: 1.6249907}
+  - {x: 0.013551712, y: 2.571657}
+  - {x: 1.4256907, y: 1.3313264}
+  - {x: 0.96402884, y: -0.72521776}
+  - {x: -0.585022, y: -2.4295497}
+  - {x: -1.6141891, y: -0.5104777}
+  - {x: -1.573925, y: -0.55074245}
 --- !u!82 &82608511797522940
 AudioSource:
   m_ObjectHideFlags: 1
@@ -183,7 +181,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0.98896503
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0

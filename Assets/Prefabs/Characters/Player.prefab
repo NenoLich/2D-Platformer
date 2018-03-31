@@ -35,14 +35,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4348374985554370}
   - component: {fileID: 50821991895440770}
-  - component: {fileID: 61210021427297534}
-  - component: {fileID: 58649586903369290}
   - component: {fileID: 114360689934486420}
   - component: {fileID: 82218488952759778}
   - component: {fileID: 212246386592668210}
   - component: {fileID: 95967933939810710}
-  - component: {fileID: 114798166854398512}
   - component: {fileID: 114243549968962716}
+  - component: {fileID: 114455831405358860}
+  - component: {fileID: 58554301267456774}
+  - component: {fileID: 68998191280833934}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -97,7 +97,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &58649586903369290
+--- !u!58 &58554301267456774
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -109,34 +109,29 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.3103581, y: -1.048554}
+  m_Offset: {x: -0.30288517, y: -0.9696308}
   serializedVersion: 2
-  m_Radius: 1.3823732
---- !u!61 &61210021427297534
-BoxCollider2D:
+  m_Radius: 1.5013036
+--- !u!68 &68998191280833934
+EdgeCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1948847468638120}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 24ac79603fb61400588e37d9f6fe952a, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.46553898, y: 0.36947674}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.41, y: 5.42}
-    newSize: {x: 6.41, y: 5.42}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.9303265, y: 4.273609}
+  m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
+  m_Points:
+  - {x: -1.5815258, y: -0.33822536}
+  - {x: -2.1278095, y: 1.1124539}
+  - {x: -0.35180092, y: 3.0440264}
+  - {x: 1.1132908, y: 1.4890122}
+  - {x: 0.9862423, y: -0.35175323}
 --- !u!82 &82218488952759778
 AudioSource:
   m_ObjectHideFlags: 1
@@ -248,6 +243,7 @@ MonoBehaviour:
   facingRight: 1
   speed: 8
   jumpForce: 1500
+  maxVerticalVelocity: 40
 --- !u!114 &114360689934486420
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -268,7 +264,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4baef03e1cc8f4ab69708f3aedbce21c, type: 3}
   hurtForce: 100
   damageAmount: 5
---- !u!114 &114798166854398512
+--- !u!114 &114455831405358860
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -276,10 +272,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1948847468638120}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d9bf156813c141e98b61835f46356f7, type: 3}
+  m_Script: {fileID: 11500000, guid: ed54f30c6c0c1e347b94c13406b95546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rocket: {fileID: 50256525718998088, guid: 5cebd122471023d4ab6fe0cae545cab9, type: 2}
+  bullet: {fileID: 50256525718998088, guid: 5cebd122471023d4ab6fe0cae545cab9, type: 2}
   speed: 20
   shootClip: {fileID: 8300000, guid: b142aa02a8648c94b999212277216d05, type: 3}
 --- !u!212 &212246386592668210

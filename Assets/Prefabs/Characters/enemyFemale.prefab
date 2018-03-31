@@ -19,13 +19,13 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4393032992342484}
-  - component: {fileID: 61040121411094216}
   - component: {fileID: 50734796096878692}
   - component: {fileID: 114188578420598468}
-  - component: {fileID: 58624460961213360}
   - component: {fileID: 212330897407702552}
   - component: {fileID: 95095876535803350}
   - component: {fileID: 82279856299094076}
+  - component: {fileID: 58207411301017426}
+  - component: {fileID: 68501092942119500}
   m_Layer: 10
   m_Name: enemyFemale
   m_TagString: Enemy
@@ -83,7 +83,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1032927540473836}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -33.4314, y: -1.4438444, z: -9.9313965}
+  m_LocalPosition: {x: -19.390972, y: 9.536926, z: -9.9313965}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1.4970795}
   m_Children:
   - {fileID: 4077455976320846}
@@ -119,12 +119,12 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 536367617801acd41965bfc3ccb1dab4, type: 2}
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &58624460961213360
+--- !u!58 &58207411301017426
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -132,38 +132,35 @@ CircleCollider2D:
   m_GameObject: {fileID: 1032927540473836}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 536367617801acd41965bfc3ccb1dab4, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.009900928, y: -1.327647}
+  m_Offset: {x: 0, y: -1.3103992}
   serializedVersion: 2
-  m_Radius: 1.5675479
---- !u!61 &61040121411094216
-BoxCollider2D:
+  m_Radius: 1.5696009
+--- !u!68 &68501092942119500
+EdgeCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1032927540473836}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 536367617801acd41965bfc3ccb1dab4, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.12871361, y: 0.28891373}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.21, y: 5.76}
-    newSize: {x: 5.21, y: 5.76}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.2337189, y: 4.3879213}
+  m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
+  m_Points:
+  - {x: -1.4774227, y: -0.96931696}
+  - {x: -1.4281178, y: 1.0672736}
+  - {x: -0.4400158, y: 2.670567}
+  - {x: 1.8600178, y: 0.9874886}
+  - {x: 1.4599109, y: -1.1359954}
+  - {x: -0.12139797, y: -2.55625}
+  - {x: -1.4579225, y: -0.9695053}
 --- !u!82 &82279856299094076
 AudioSource:
   m_ObjectHideFlags: 1
