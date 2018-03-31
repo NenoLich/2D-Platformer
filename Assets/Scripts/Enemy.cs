@@ -30,11 +30,7 @@ public class Enemy : MonoBehaviour
     void FixedUpdate()
     {
         //GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x * moveSpeed, GetComponent<Rigidbody2D>().velocity.y);	
-    }
-
-    private void Update()
-    {
-        if (dead || player==null)
+        if (dead || player == null)
             return;
 
         distanceToTarget = transform.position.x - player.transform.position.x;
@@ -43,13 +39,18 @@ public class Enemy : MonoBehaviour
         if (Mathf.Abs(distanceToTarget) > 0.7f)
         {
             isMovingRight = distanceToTarget < 0;
-            transform.Translate(isMovingRight ? moveSpeed * Time.deltaTime : -moveSpeed * Time.deltaTime, 0f, 0f);
+            transform.Translate(isMovingRight ? moveSpeed * Time.fixedDeltaTime : -moveSpeed * Time.deltaTime, 0f, 0f);
             if (isMovingRight != transform.localScale.x > 0)
                 Flip();
         }
 
         if (HP <= 0 && !dead)
             Death();
+    }
+
+    private void Update()
+    {
+        
     }
 
     public void Attack()

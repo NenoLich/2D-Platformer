@@ -29,12 +29,12 @@ public class PlayerAttack : MonoBehaviour
 
             if (playerCtrl.facingRight)
             {
-                Rigidbody2D bulletInstance = Instantiate(bullet, transform.position, Quaternion.Euler(new Vector3(0, 0, -90f))) as Rigidbody2D;
+                Rigidbody2D bulletInstance = Instantiate(bullet, transform.position+new Vector3(0.7f,0f,0f), Quaternion.Euler(new Vector3(0, 0, -90f))) as Rigidbody2D;
                 //bulletInstance.velocity = new Vector2(speed, 0);
             }
             else
             {
-                Rigidbody2D bulletInstance = Instantiate(bullet, transform.position, Quaternion.Euler(new Vector3(0, 0, 90f))) as Rigidbody2D;
+                Rigidbody2D bulletInstance = Instantiate(bullet, transform.position + new Vector3(-0.7f, 0f, 0f), Quaternion.Euler(new Vector3(0, 0, 90f))) as Rigidbody2D;
                 //bulletInstance.velocity = new Vector2(-speed, 0);
             }
         }
