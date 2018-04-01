@@ -20,7 +20,6 @@ sysinfo.txt
 /*.userprefs
 /*.csproj
 /*.pidb
-*.pidb.meta
 /*.suo
 /*.sln*
 /*.user
