@@ -5,20 +5,23 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     public Rigidbody2D bullet;
-    public float speed = 20f;
+    public float bulletSpeed = 50f;
     public AudioClip shootClip;
 
-    private PlayerController playerCtrl;
+    private PlayerController playerController;
+    private int multiplier;
     private Animator anim;
 
     void Awake ()
     {
         anim = GetComponent<Animator>();
-        playerCtrl = GetComponent<PlayerController>();
+        playerController = GetComponent<PlayerController>();
     }
 	
 	void Update ()
     {
+        multiplier = playerController.facingRight ? 1 : -1;
+
         if (Input.GetButtonDown("Fire1"))
         {
             anim.SetTrigger("Shoot");
@@ -27,25 +30,18 @@ public class PlayerAttack : MonoBehaviour
             audio.clip = shootClip;
             audio.Play();
 
-            if (playerCtrl.facingRight)
-            {
-                Rigidbody2D bulletInstance = Instantiate(bullet, transform.position+new Vector3(0.7f,0f,0f), Quaternion.Euler(new Vector3(0, 0, -90f))) as Rigidbody2D;
-                //bulletInstance.velocity = new Vector2(speed, 0);
-            }
-            else
-            {
-                Rigidbody2D bulletInstance = Instantiate(bullet, transform.position + new Vector3(-0.7f, 0f, 0f), Quaternion.Euler(new Vector3(0, 0, 90f))) as Rigidbody2D;
-                //bulletInstance.velocity = new Vector2(-speed, 0);
-            }
+            Rigidbody2D bulletInstance = Instantiate(bullet, 
+                transform.position + new Vector3(0.7f * multiplier, 0f, 0f), Quaternion.Euler(new Vector3(0, 0, -90f * multiplier))) as Rigidbody2D;
+            bulletInstance.velocity = new Vector2(bulletSpeed * multiplier, 0);
         }
 
         if (Input.GetButtonDown("Fire2"))
         {
             anim.SetTrigger("Melee");
 
-            RaycastHit2D[] raycastHits = Physics2D.LinecastAll(transform.position,
-                   new Vector3(playerCtrl.facingRight ? transform.position.x + 1f : transform.position.x - 1f,
-                   transform.position.y, transform.position.z), LayerMask.GetMask("Enemies"));
+            RaycastHit2D[] raycastHits = Physics2D.LinecastAll(transform.position, 
+                new Vector3(transform.position.x + multiplier, transform.position.y, transform.position.z), 
+                LayerMask.GetMask("Enemies"));
 
             foreach (RaycastHit2D raycastHit in raycastHits)
             {

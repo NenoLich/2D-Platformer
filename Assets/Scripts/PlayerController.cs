@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
             if (facingRight != movement > 0)
                 Flip();
 
-            transform.Translate(movement * speed * Time.fixedDeltaTime, 0f, 0f);
+            rigBody.velocity = new Vector2(speed * movement, rigBody.velocity.y);
         }
 
         anim.SetBool("Run", Mathf.Abs(movement) > 0.01f && grounded);

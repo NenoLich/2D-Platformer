@@ -3,11 +3,11 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    public float moveSpeed = 20f;
     public int HP = 2;
     public Material deadEnemy;
     public GameObject hundredPointsUI;
-
+    public float minDistanceToTarget=0.7f;
 
     private SpriteRenderer ren;
     private Transform frontCheck;
@@ -17,10 +17,12 @@ public class Enemy : MonoBehaviour
     private bool isMovingRight;
     private float distanceToTarget;
     private Animator anim;
+    private Rigidbody2D rigBody;
 
     void Awake()
     {
         ren = GetComponent<SpriteRenderer>();
+        rigBody = GetComponent<Rigidbody2D>();
         frontCheck = transform.Find("frontCheck").transform;
         score = GameObject.Find("Score").GetComponent<Score>();
         player = GameObject.FindGameObjectWithTag("Player");
@@ -29,17 +31,16 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
-        //GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x * moveSpeed, GetComponent<Rigidbody2D>().velocity.y);	
         if (dead || player == null)
             return;
 
         distanceToTarget = transform.position.x - player.transform.position.x;
         anim.SetFloat("distanceToTarget", distanceToTarget);
 
-        if (Mathf.Abs(distanceToTarget) > 0.7f)
+        if (Mathf.Abs(distanceToTarget) > minDistanceToTarget)
         {
             isMovingRight = distanceToTarget < 0;
-            transform.Translate(isMovingRight ? moveSpeed * Time.fixedDeltaTime : -moveSpeed * Time.deltaTime, 0f, 0f);
+            rigBody.velocity = new Vector2(transform.localScale.x * moveSpeed, rigBody.velocity.y);
             if (isMovingRight != transform.localScale.x > 0)
                 Flip();
         }

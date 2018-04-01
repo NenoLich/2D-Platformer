@@ -242,7 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   facingRight: 1
   speed: 8
-  jumpForce: 1000
+  jumpForce: 500
   maxVerticalVelocity: 20
 --- !u!114 &114360689934486420
 MonoBehaviour:
@@ -276,7 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 50256525718998088, guid: 5cebd122471023d4ab6fe0cae545cab9, type: 2}
-  speed: 20
+  bulletSpeed: 50
   shootClip: {fileID: 8300000, guid: b142aa02a8648c94b999212277216d05, type: 3}
 --- !u!212 &212246386592668210
 SpriteRenderer:

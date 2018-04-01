@@ -7,16 +7,13 @@ public class Bullet : MonoBehaviour {
     public GameObject explosion;
     public float speed=20f;
 
+    private Rigidbody2D rigBody;
+
 	void Start ()
     {
+        rigBody = GetComponent<Rigidbody2D>();
         Destroy(gameObject, 2f);
 	}
-
-    private void Update()
-    {
-        transform.Translate(0f,
-            transform.eulerAngles.z > 0 ? speed * Time.deltaTime : -speed * Time.deltaTime, 0f);
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
