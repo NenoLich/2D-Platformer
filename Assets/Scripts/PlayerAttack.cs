@@ -7,6 +7,7 @@ public class PlayerAttack : MonoBehaviour
     public Rigidbody2D bullet;
     public float bulletSpeed = 50f;
     public AudioClip shootClip;
+    public GameObject trap;
 
     private PlayerController playerController;
     private int multiplier;
@@ -47,6 +48,11 @@ public class PlayerAttack : MonoBehaviour
             {
                 raycastHit.collider.GetComponent<Enemy>().Hurt();
             }
+        }
+
+        if (Input.GetButtonDown("Trap"))
+        {
+            Instantiate(trap, transform.position, Quaternion.identity);
         }
     }
 }

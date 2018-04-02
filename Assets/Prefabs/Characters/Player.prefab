@@ -278,6 +278,7 @@ MonoBehaviour:
   bullet: {fileID: 50256525718998088, guid: 5cebd122471023d4ab6fe0cae545cab9, type: 2}
   bulletSpeed: 50
   shootClip: {fileID: 8300000, guid: b142aa02a8648c94b999212277216d05, type: 3}
+  trap: {fileID: 100000, guid: 18248dcdaf98ac345b877b6b093a4a24, type: 2}
 --- !u!212 &212246386592668210
 SpriteRenderer:
   m_ObjectHideFlags: 1
