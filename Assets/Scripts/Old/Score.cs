@@ -21,9 +21,5 @@ public class Score : MonoBehaviour
 	{
 		// Set the score text.
 		GetComponent<GUIText>().text = "Счёт: " + score;
-
-		// Set the previous score to this frame's score.
-		previousScore = score;
 	}
-
 }

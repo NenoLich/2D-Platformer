@@ -30,7 +30,7 @@ public class CameraController : MonoBehaviour
     }
 
 
-    void FixedUpdate()
+    void LateUpdate()
     {
         TrackPlayer();
     }

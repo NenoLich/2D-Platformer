@@ -61,8 +61,8 @@ public class PlayerHealth : MonoBehaviour
 						s.sortingLayerName = "UI";
 					}
 
-					// ... disable user Player Control script
-					GetComponent<PlayerController>().enabled = false;
+                    // ... disable user Player Control script
+                    playerControl.enabled = false;
 
 					// ... disable the Gun script to stop a dead guy shooting a nonexistant bazooka
 					//GetComponentInChildren<Gun>().enabled = false;

@@ -46,7 +46,7 @@ public class PlayerAttack : MonoBehaviour
 
             foreach (RaycastHit2D raycastHit in raycastHits)
             {
-                raycastHit.collider.GetComponent<Enemy>().Hurt();
+                raycastHit.collider.GetComponent<Enemy>().Hurt(2);
             }
         }
 

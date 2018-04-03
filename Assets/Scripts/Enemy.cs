@@ -10,7 +10,6 @@ public class Enemy : MonoBehaviour
     public float minDistanceToTarget=0.7f;
 
     private SpriteRenderer ren;
-    private Transform frontCheck;
     private bool dead = false;
     private Score score;
     private GameObject player;
@@ -23,7 +22,6 @@ public class Enemy : MonoBehaviour
     {
         ren = GetComponent<SpriteRenderer>();
         rigBody = GetComponent<Rigidbody2D>();
-        frontCheck = transform.Find("frontCheck").transform;
         score = GameObject.Find("Score").GetComponent<Score>();
         player = GameObject.FindGameObjectWithTag("Player");
         anim = GetComponent<Animator>();
@@ -59,15 +57,15 @@ public class Enemy : MonoBehaviour
         anim.SetTrigger("Attack");
     }
 
-    public void Hurt()
+    public void Hurt(int hp)
     {
-        HP--;
+        HP-=hp;
         GetComponent<AudioSource>().Play();
     }
 
     void Death()
     {
-        ren.material = deadEnemy;
+        ren.material.color=Color.black;
         anim.SetTrigger("Die");
 
         score.score += 100;

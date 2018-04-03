@@ -7,11 +7,8 @@ public class Bullet : MonoBehaviour {
     public GameObject explosion;
     public float speed=20f;
 
-    private Rigidbody2D rigBody;
-
 	void Start ()
     {
-        rigBody = GetComponent<Rigidbody2D>();
         Destroy(gameObject, 2f);
 	}
 
@@ -19,14 +16,14 @@ public class Bullet : MonoBehaviour {
     {
         if (collision.tag=="Enemy")
         {
-            collision.GetComponent<Enemy>().Hurt();
+            collision.GetComponent<Enemy>().Hurt(1);
 
             Hit();
         }
 
         else
         {
-            if (collision.tag!="Player")
+            if (collision.tag!="Player" && collision.tag != "Trap")
             {
                 Hit();
             }

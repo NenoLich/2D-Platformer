@@ -27,8 +27,6 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         grounded = Physics2D.IsTouchingLayers(groundCheck, LayerMask.GetMask("Ground"));
-        //grounded = Physics2D.OverlapArea(new Vector2(-1.5f+transform.position.x,-1.2f + transform.position.y), 
-            //new Vector2(1f + transform.position.x, -1.3f + transform.position.y), LayerMask.GetMask("Ground"))!=null;
             
         if (grounded && Input.GetButton("Jump"))
         {
