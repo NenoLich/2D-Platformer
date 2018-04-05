@@ -8,7 +8,6 @@ public class Trap : MonoBehaviour {
     public float activationRadius = 0.5f;
 
     private Animator anim;
-    private Coroutine routine;
 
     void Start ()
     {
@@ -18,7 +17,7 @@ public class Trap : MonoBehaviour {
 
     private void Activate()
     {
-        routine=StartCoroutine(CheckEnemy());
+        StartCoroutine(CheckEnemy());
     }
 
     IEnumerator CheckEnemy()
@@ -29,7 +28,7 @@ public class Trap : MonoBehaviour {
             enemyCollider = Physics2D.Linecast(transform.position - transform.right * activationRadius, 
                 transform.position + transform.right * activationRadius, LayerMask.GetMask("Enemies")).collider;
 
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.1f);
         }
 
         Catch(enemyCollider);

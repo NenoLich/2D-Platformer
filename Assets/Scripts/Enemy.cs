@@ -5,18 +5,20 @@ public class Enemy : MonoBehaviour
 {
     public float moveSpeed = 20f;
     public int HP = 2;
+    public int damage = 10;
     public Material deadEnemy;
     public GameObject hundredPointsUI;
     public float minDistanceToTarget=0.7f;
+    public float repeatDamagePeriod = 2f;
 
     private SpriteRenderer ren;
     private bool dead = false;
     private Score score;
     private GameObject player;
-    private bool isMovingRight;
     private float distanceToTarget;
     private Animator anim;
     private Rigidbody2D rigBody;
+    private float lastHitTime;
 
     void Awake()
     {
@@ -37,11 +39,14 @@ public class Enemy : MonoBehaviour
 
         if (Mathf.Abs(distanceToTarget) > minDistanceToTarget)
         {
-            isMovingRight = distanceToTarget < 0;
             rigBody.velocity = new Vector2(transform.localScale.x * moveSpeed, rigBody.velocity.y);
-            if (isMovingRight != transform.localScale.x > 0)
+            if (distanceToTarget < 0 != transform.localScale.x > 0)
                 Flip();
         }
+
+        RaycastHit2D hit = Physics2D.Linecast(transform.position, new Vector2(transform.position.x + Mathf.Sign(rigBody.velocity.x), transform.position.y), LayerMask.GetMask("Player"));
+        if (hit.collider != null && lastHitTime <= Time.time-repeatDamagePeriod)
+            Attack();
 
         if (HP <= 0 && !dead)
             Death();
@@ -55,6 +60,8 @@ public class Enemy : MonoBehaviour
     public void Attack()
     {
         anim.SetTrigger("Attack");
+        player.GetComponent<PlayerHealth>().TakeDamage(damage);
+        lastHitTime = Time.time;
     }
 
     public void Hurt(int hp)
