@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Elevator : MonoBehaviour {
 
+    public float liftForce = 500f;
+
     private Rigidbody2D rigBody;
 
 	void Start ()
@@ -14,6 +16,6 @@ public class Elevator : MonoBehaviour {
 	
 	void Elevate()
     {
-        rigBody.AddForce(new Vector2(0f, 1000f));
+        rigBody.AddForce(new Vector2(0f, liftForce));
     }
 }
