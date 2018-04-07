@@ -6,7 +6,7 @@ public class FoundationRenderer : MonoBehaviour {
 
     private SpriteRenderer spriteRenderer;
     private Transform topPlatformtransform;
-    private Vector3 offset;
+    private float offset;
     private float margin;
 
     void Start ()
@@ -26,7 +26,7 @@ public class FoundationRenderer : MonoBehaviour {
 	
 	void Update ()
     {
-        offset = new Vector3(0f,topPlatformtransform.position.y - margin - transform.position.y, 0f);
-        transform.Translate(offset,Space.World);
+        offset = topPlatformtransform.position.y - margin - transform.position.y;
+        transform.Translate(new Vector3(0f, offset, 0f), Space.World);
     }
 }

@@ -5,6 +5,9 @@ using UnityEngine;
 public class Elevator : MonoBehaviour {
 
     public float liftForce = 500f;
+    public float minYPosition = -4f;
+    public float maxYPosition = 5f;
+    public int platformDamage = 20;
 
     private Rigidbody2D rigBody;
 
@@ -17,5 +20,18 @@ public class Elevator : MonoBehaviour {
 	void Elevate()
     {
         rigBody.AddForce(new Vector2(0f, liftForce));
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag=="Enemy")
+        {
+            other.GetComponent<Enemy>().Hurt(platformDamage);
+        }
+
+        if (other.tag == "Player")
+        {
+            other.GetComponent<PlayerHealth>().TakeDamage(platformDamage);
+        }
     }
 }
