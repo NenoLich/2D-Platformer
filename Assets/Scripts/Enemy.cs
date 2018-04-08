@@ -35,7 +35,6 @@ public class Enemy : MonoBehaviour
             return;
 
         distanceToTarget = transform.position.x - player.transform.position.x;
-        anim.SetFloat("distanceToTarget", distanceToTarget);
 
         if (Mathf.Abs(distanceToTarget) > minDistanceToTarget)
         {
@@ -54,7 +53,7 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        
+        anim.SetFloat("distanceToTarget", distanceToTarget);
     }
 
     public void Attack()

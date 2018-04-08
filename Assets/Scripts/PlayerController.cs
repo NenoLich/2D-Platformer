@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
         if (grounded && Input.GetButton("Jump"))
         {
             rigBody.AddForce(new Vector2(0f, jumpForce));
-            anim.SetTrigger("Jump");
         }
         rigBody.velocity = rigBody.velocity.y > maxVerticalVelocity ? new Vector2(0f, maxVerticalVelocity) : rigBody.velocity;
 
@@ -44,12 +43,13 @@ public class PlayerController : MonoBehaviour
             rigBody.velocity = new Vector2(speed * movement, rigBody.velocity.y);
         }
 
-        anim.SetBool("Run", Mathf.Abs(movement) > 0.01f && grounded);
+        //anim.SetBool("Run", Mathf.Abs(movement) > 0.01f && grounded);
     }
 
     void Update ()
     {
-        
+        anim.SetFloat("VelosityX",Mathf.Abs(rigBody.velocity.x));
+        anim.SetFloat("VelosityY",Mathf.Abs(rigBody.velocity.y));
     }
 
     void Flip()
