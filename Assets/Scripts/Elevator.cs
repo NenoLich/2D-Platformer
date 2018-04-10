@@ -5,7 +5,6 @@ using UnityEngine;
 public class Elevator : MonoBehaviour {
 
     public float liftForce = 500f;
-    public float minYPosition = -4f;
     public float maxYPosition = 5f;
     public int platformDamage = 20;
 
@@ -16,8 +15,16 @@ public class Elevator : MonoBehaviour {
         rigBody = GetComponent<Rigidbody2D>();
         InvokeRepeating("Elevate",1.5f,3f);
 	}
-	
-	void Elevate()
+
+    private void FixedUpdate()
+    {
+        if (transform.position.y>maxYPosition)
+        {
+            rigBody.velocity = Vector2.zero;
+        }
+    }
+
+    void Elevate()
     {
         rigBody.AddForce(new Vector2(0f, liftForce));
     }

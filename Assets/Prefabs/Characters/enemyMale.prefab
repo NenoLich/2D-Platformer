@@ -171,7 +171,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 039514349165244c6a43be5c3070d14b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0937b8ecdd5a4de4eb7f28806e0937ac, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
@@ -272,9 +272,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 16
   HP: 2
-  deadEnemy: {fileID: 2100000, guid: 145c2f6a716caa14492c9a135672b71c, type: 2}
+  damage: 10
   hundredPointsUI: {fileID: 100006, guid: 31974361bc9e44fb18c77b64a4cb3bbd, type: 2}
   minDistanceToTarget: 0.7
+  repeatDamagePeriod: 2
 --- !u!212 &212792991518920554
 SpriteRenderer:
   m_ObjectHideFlags: 1

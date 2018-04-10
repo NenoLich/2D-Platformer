@@ -6,7 +6,6 @@ public class Enemy : MonoBehaviour
     public float moveSpeed = 20f;
     public int HP = 2;
     public int damage = 10;
-    public Material deadEnemy;
     public GameObject hundredPointsUI;
     public float minDistanceToTarget=0.7f;
     public float repeatDamagePeriod = 2f;

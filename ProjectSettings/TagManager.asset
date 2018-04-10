@@ -14,6 +14,7 @@ TagManager:
   - ExplosionFX
   - HealthBar
   - Trap
+  - Boss
   layers:
   - Default
   - TransparentFX

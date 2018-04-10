@@ -14,20 +14,23 @@ public class Bullet : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag=="Enemy")
+        switch (collision.tag)
         {
-            collision.GetComponent<Enemy>().Hurt(1);
-
-            Hit();
+            case "Enemy":
+                collision.GetComponent<Enemy>().Hurt(1);
+                break;
+            case "Player":
+                collision.GetComponent<PlayerHealth>().TakeDamage(10);
+                break;
+            case "Boss":
+                collision.GetComponent<Boss>().Hurt(1);
+                break;
+            case "Trap":
+                return;
         }
 
-        else
-        {
-            if (collision.tag!="Player" && collision.tag != "Trap")
-            {
-                Hit();
-            }
-        }
+        Hit();
+        
     }
     private void Hit()
     {
