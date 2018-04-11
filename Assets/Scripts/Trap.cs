@@ -36,7 +36,7 @@ public class Trap : MonoBehaviour {
 
     private void Catch(Collider2D collider)
     {
-        collider.GetComponent<Enemy>().Hurt(2);
+        collider.GetComponent<EnemyHealth>().Hurt(2);
         anim.SetTrigger("Catch");
         Destroy(gameObject,0.4f);
     }

@@ -9,24 +9,19 @@ public class Boss : MonoBehaviour {
     public float maxWalkVelosity;
     public float maxRunVelosity;
     public float minDistanceToTarget;
-    public float repeatDamagePeriod;
     public float detectionRange;
-    public int HP;
-    public GameObject thousandPointsUI;
-    public AudioClip deathScream;
-    public AudioClip deathBlow;
+    public AudioClip deathClip;
 
     private LinkedListNode<Transform> currentDestination;
     private Rigidbody2D rigBody;
     private LinkedList<Transform> waypoints;
-    private float lastHitTime;
     private bool isAggressive;
     private float maxVelosity;
     private Animator anim;
-    private bool dead = false;
     private GameObject player;
-    private Score score;
     private AudioSource audioSource;
+    private EnemyHealth enemyHealth;
+    private BossAttack bossAttack;
 
     void Awake ()
     {
@@ -35,14 +30,16 @@ public class Boss : MonoBehaviour {
         currentDestination = waypoints.First;
         isAggressive = false;
         anim = GetComponent<Animator>();
-        score = GameObject.Find("Score").GetComponent<Score>();
         player = GameObject.FindGameObjectWithTag("Player");
         audioSource = GetComponent<AudioSource>();
+        enemyHealth = GetComponent<EnemyHealth>();
+        bossAttack = GetComponent<BossAttack>();
+        enemyHealth.Death += OnDeath;
     }
 
     private void FixedUpdate()
     {
-        if (dead || player == null)
+        if (enemyHealth.dead || player == null)
             return;
 
         maxVelosity = isAggressive ? maxRunVelosity : maxWalkVelosity;
@@ -52,27 +49,24 @@ public class Boss : MonoBehaviour {
         if (Mathf.Abs(rigBody.velocity.x) > maxVelosity)
             rigBody.velocity = new Vector2(Mathf.Sign(rigBody.velocity.x)* maxVelosity, rigBody.velocity.y);
 
+        anim.SetFloat("VelosityX",Mathf.Abs(rigBody.velocity.x));
+        anim.SetFloat("VelosityY", Mathf.Abs(rigBody.velocity.y));
+
         RaycastHit2D hit = Physics2D.Linecast(transform.position, new Vector2(transform.position.x + Mathf.Sign(rigBody.velocity.x)* detectionRange, transform.position.y), LayerMask.GetMask("Player"));
-        if (hit.collider != null && lastHitTime <= Time.time - repeatDamagePeriod)
-            Attack();
+        if (hit.collider != null)
+        {
+            rigBody.velocity = Vector2.zero;
+            bossAttack.Attack();
+        }
     }
 
     void Update ()
     {
-        if (dead || player == null)
-        {
-            Destroy(gameObject,2f);
-            return;
-        }
-
         if ((currentDestination.Value.position - transform.position).sqrMagnitude < minDistanceToTarget)
             currentDestination = currentDestination.Next != null ? currentDestination.Next : waypoints.First;
 
         if (rigBody.velocity.x < 0 == transform.localScale.x > 0)
-            Flip();
-
-        if (HP <= 0 && !dead)
-            Death();
+            enemyHealth.Flip();
     }
 
     void FindNearestWaypoint()
@@ -94,47 +88,14 @@ public class Boss : MonoBehaviour {
         }
     }
 
-    private void Attack()
+    void OnDeath()
     {
-        Debug.Log("Boss Attack");
-        lastHitTime = Time.time;
-    }
-
-    public void Hurt(int hp)
-    {
-        HP -= hp;
-    }
-
-    void Death()
-    {
-        audioSource.clip = deathScream;
+        audioSource.clip = deathClip;
         audioSource.Play();
-        Invoke("Blow", 1f);
-        anim.SetTrigger("Die");
-
-        score.score += 1000;
-
-        dead = true;
+        Destroy(gameObject, 2f);
 
         rigBody.velocity = Vector2.zero;
         rigBody.isKinematic = true;
-
-        Vector3 scorePos;
-        scorePos = transform.position;
-        scorePos.y += 1.5f;
-        Instantiate(thousandPointsUI, scorePos, Quaternion.identity);
     }
 
-    void Blow()
-    {
-        audioSource.clip=deathBlow;
-        audioSource.Play();
-    }
-
-    private void Flip()
-    {
-        Vector3 bossScale = transform.localScale;
-        bossScale.x *= -1;
-        transform.localScale = bossScale;
-    }
 }

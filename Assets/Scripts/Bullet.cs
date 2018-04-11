@@ -17,13 +17,11 @@ public class Bullet : MonoBehaviour {
         switch (collision.tag)
         {
             case "Enemy":
-                collision.GetComponent<Enemy>().Hurt(1);
+            case "Boss":
+                collision.GetComponent<EnemyHealth>().Hurt(1);
                 break;
             case "Player":
                 collision.GetComponent<PlayerHealth>().TakeDamage(10);
-                break;
-            case "Boss":
-                collision.GetComponent<Boss>().Hurt(1);
                 break;
             case "Trap":
                 return;

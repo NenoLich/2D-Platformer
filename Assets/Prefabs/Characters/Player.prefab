@@ -42,7 +42,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1948847468638120}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -35.91, y: -3.96, z: -1}
+  m_LocalPosition: {x: 46, y: -3.96, z: -1}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1.0403509}
   m_Children: []
   m_Father: {fileID: 0}
@@ -246,6 +246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 50256525718998088, guid: 5cebd122471023d4ab6fe0cae545cab9, type: 2}
   bulletSpeed: 50
+  offset: 0.7
   shootClip: {fileID: 8300000, guid: b142aa02a8648c94b999212277216d05, type: 3}
   trap: {fileID: 100000, guid: 18248dcdaf98ac345b877b6b093a4a24, type: 2}
 --- !u!212 &212246386592668210

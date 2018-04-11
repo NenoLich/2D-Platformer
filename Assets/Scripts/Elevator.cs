@@ -33,7 +33,7 @@ public class Elevator : MonoBehaviour {
     {
         if (other.tag=="Enemy")
         {
-            other.GetComponent<Enemy>().Hurt(platformDamage);
+            other.GetComponent<EnemyHealth>().Hurt(platformDamage);
         }
 
         if (other.tag == "Player")

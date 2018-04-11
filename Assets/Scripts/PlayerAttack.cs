@@ -6,6 +6,7 @@ public class PlayerAttack : MonoBehaviour
 {
     public Rigidbody2D bullet;
     public float bulletSpeed = 50f;
+    public float offset = 0.7f;
     public AudioClip shootClip;
     public GameObject trap;
 
@@ -32,7 +33,7 @@ public class PlayerAttack : MonoBehaviour
             audio.Play();
 
             Rigidbody2D bulletInstance = Instantiate(bullet, 
-                transform.position + new Vector3(0.7f * multiplier, 0f, 0f), Quaternion.Euler(new Vector3(0, 0, -90f * multiplier))) as Rigidbody2D;
+                transform.position + new Vector3(offset * multiplier, 0f, 0f), Quaternion.Euler(new Vector3(0, 0, -90f * multiplier))) as Rigidbody2D;
             bulletInstance.velocity = new Vector2(bulletSpeed * multiplier, 0);
         }
 
@@ -46,7 +47,7 @@ public class PlayerAttack : MonoBehaviour
 
             foreach (RaycastHit2D raycastHit in raycastHits)
             {
-                raycastHit.collider.GetComponent<Enemy>().Hurt(2);
+                raycastHit.collider.GetComponent<EnemyHealth>().Hurt(2);
             }
         }
 

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4647866140878392}
   - component: {fileID: 50304859027194912}
   - component: {fileID: 114529181280398766}
+  - component: {fileID: 114713263013491846}
   - component: {fileID: 58701242034241348}
   - component: {fileID: 212792991518920554}
   - component: {fileID: 95826757191950976}
@@ -96,7 +97,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1171169998463700}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -33.415314, y: -1.3204777, z: -9.9313965}
+  m_LocalPosition: {x: 61.933945, y: -3.5756586, z: -9.9313965}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1.4970795}
   m_Children:
   - {fileID: 4561170673069928}
@@ -271,11 +272,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 16
-  HP: 2
   damage: 10
-  hundredPointsUI: {fileID: 100006, guid: 31974361bc9e44fb18c77b64a4cb3bbd, type: 2}
   minDistanceToTarget: 0.7
   repeatDamagePeriod: 2
+--- !u!114 &114713263013491846
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1171169998463700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 821d4e9de3c0ec14abdced56d216732f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 2
+  PointsUI: {fileID: 100006, guid: 31974361bc9e44fb18c77b64a4cb3bbd, type: 2}
+  killPoints: 100
+  dead: 0
 --- !u!212 &212792991518920554
 SpriteRenderer:
   m_ObjectHideFlags: 1

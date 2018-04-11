@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 58861553195819642}
   - component: {fileID: 95057327438867320}
   - component: {fileID: 114010848010323932}
+  - component: {fileID: 114407454302332262}
+  - component: {fileID: 114411326309054070}
   - component: {fileID: 82003749208758694}
   m_Layer: 10
   m_Name: Boss
@@ -89,7 +91,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 95aefb09366686f4a89b4387d1124335, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -195,13 +197,40 @@ MonoBehaviour:
   maxWalkVelosity: 3.5
   maxRunVelosity: 7
   minDistanceToTarget: 0.1
-  repeatDamagePeriod: 1.2
   detectionRange: 25
+  deathClip: {fileID: 8300000, guid: 95aefb09366686f4a89b4387d1124335, type: 3}
+--- !u!114 &114407454302332262
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1706064690118402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d56122f399e472b4c9a7a6e633aa51c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootClip: {fileID: 8300000, guid: b142aa02a8648c94b999212277216d05, type: 3}
+  bullet: {fileID: 50256525718998088, guid: 5cebd122471023d4ab6fe0cae545cab9, type: 2}
+  bulletSpeed: 50
+  offsetX: 0.9
+  offsetY: -0.4
+  repeatDamagePeriod: 1.2
+--- !u!114 &114411326309054070
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1706064690118402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 821d4e9de3c0ec14abdced56d216732f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   HP: 15
-  thousandPointsUI: {fileID: 1681031090297274, guid: 44e8be115a67b5544ad25b122398d1b1,
-    type: 2}
-  deathScream: {fileID: 8300000, guid: f1bda8d364c3f434cb3a3e9e3c67c489, type: 3}
-  deathBlow: {fileID: 8300000, guid: 82828397776dd954795b130ce001e61e, type: 3}
+  PointsUI: {fileID: 1681031090297274, guid: 44e8be115a67b5544ad25b122398d1b1, type: 2}
+  killPoints: 1000
+  dead: 0
 --- !u!212 &212124012175964820
 SpriteRenderer:
   m_ObjectHideFlags: 1
