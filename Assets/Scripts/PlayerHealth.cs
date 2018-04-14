@@ -36,4 +36,9 @@ public class PlayerHealth : MonoBehaviour
             anim.SetTrigger("Die");
         }
     }
+
+    public void Restore()
+    {
+        health = maxHealth;
+    }
 }

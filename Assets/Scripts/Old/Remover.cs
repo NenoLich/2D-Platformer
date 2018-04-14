@@ -41,7 +41,7 @@ public class Remover : MonoBehaviour
 	IEnumerator ReloadGame()
 	{
 		// ... pause briefly
-		yield return new WaitForSeconds(1);
+		yield return new WaitForSeconds(2);
 		// ... and then reload the level.
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
 	}

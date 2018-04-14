@@ -70,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1125041305481100}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.337, z: 0}
+  m_LocalPosition: {x: 0.1, y: -1.337, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4118282050649312}
@@ -222,6 +222,9 @@ MonoBehaviour:
   waypointsArray:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   ladders:
   - {fileID: 0}
   - {fileID: 0}
@@ -232,6 +235,8 @@ MonoBehaviour:
   minDistanceToTarget: 0.3
   detectionRange: 25
   deathClip: {fileID: 8300000, guid: 95aefb09366686f4a89b4387d1124335, type: 3}
+  AggressionTime: 10
+  climbingSpeed: 1
 --- !u!114 &114407454302332262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -296,7 +301,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1783731295
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4df7f558774fef24d8748ad698d41562, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

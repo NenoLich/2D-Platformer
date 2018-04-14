@@ -46,12 +46,6 @@ public class EnemyHealth : MonoBehaviour {
 
         dead = true;
 
-        Collider2D[] cols = GetComponents<Collider2D>();
-        foreach (Collider2D c in cols)
-        {
-            c.isTrigger = true;
-        }
-
         Vector3 scorePos;
         scorePos = transform.position;
         scorePos.y += 1.5f;
