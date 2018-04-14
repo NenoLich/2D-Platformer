@@ -17,7 +17,7 @@ public class CameraController : MonoBehaviour
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        settings = GameObject.FindGameObjectWithTag("Settings").GetComponent<Settings>();
+        //settings = GameObject.FindGameObjectWithTag("Settings").GetComponent<Settings>();
     }
 
     bool CheckXMargin()
@@ -34,7 +34,7 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate()
     {
-        AudioListener.volume = settings.volume;
+        //AudioListener.volume = settings.volume/100;
         TrackPlayer();
     }
 

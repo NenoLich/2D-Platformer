@@ -1,19 +1,46 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.PostProcessing;
 
-public class Pauser : MonoBehaviour {
-	private bool paused = false;
-	
-	// Update is called once per frame
-	void Update () {
-		if(Input.GetKeyUp(KeyCode.P))
-		{
-			paused = !paused;
-		}
+public class Pauser : MonoBehaviour
+{
+    private bool paused = false;
+    private GameObject player;
+    private PostProcessingProfile postProcProf;
 
-		if(paused)
-			Time.timeScale = 0;
-		else
-			Time.timeScale = 1;
-	}
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        postProcProf = new PostProcessingProfile();
+    }
+
+    public void Pause()
+    {
+        Time.timeScale = paused ? 1 : 0;
+        var settings = postProcProf.chromaticAberration.settings;
+        settings.intensity = 1-Time.timeScale;
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PostProcessingBehaviour>().profile.chromaticAberration.settings = settings;
+
+        if (player!=null)
+            player.GetComponent<PlayerAttack>().enabled = !player.GetComponent<PlayerAttack>().enabled;
+
+        paused = !paused;
+
+
+        //if (paused)
+        //{
+        //    Time.timeScale = 1;
+        //    paused = !paused;
+        //    if (playerAttack.enabled==false)
+        //        playerAttack.enabled = true;
+        //}
+
+        //else
+        //{
+        //    Time.timeScale = 0;
+        //    paused = !paused;
+        //    if (playerAttack.enabled == true)
+        //        playerAttack.enabled = false;
+        //}
+    }
 }

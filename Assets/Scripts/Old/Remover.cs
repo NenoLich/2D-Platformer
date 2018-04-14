@@ -26,7 +26,7 @@ public class Remover : MonoBehaviour
 			//Instantiate(splash, col.transform.position, transform.rotation);
 			// ... destroy the player.
 			Destroy (col.gameObject);
-            StartCoroutine("ReloadGame");
+            StartCoroutine(EndGame());
 		}
 		else
 		{
@@ -38,11 +38,11 @@ public class Remover : MonoBehaviour
 		}
 	}
 
-	IEnumerator ReloadGame()
+	IEnumerator EndGame()
 	{
 		// ... pause briefly
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(1.5f);
         // ... and then reload the level.
-        GameObject.Find("StartLevelSceneUI").gameObject.GetComponent<SceneController>().Defeat(); 
+        GameObject.Find("StartLevelSceneUI").gameObject.GetComponent<SceneController>().ShowMenu("Defeat"); 
     }
 }

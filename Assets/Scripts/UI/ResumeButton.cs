@@ -7,6 +7,7 @@ public class ResumeButton : MonoBehaviour {
     public void ResumeButtonClick()
     {
         transform.parent.gameObject.SetActive(false);
-        Time.timeScale = 1;
+        transform.root.GetComponent<SceneController>().menuIsActive = false;
+        GameObject.Find("Pauser").GetComponent<Pauser>().Pause();
     }
 }

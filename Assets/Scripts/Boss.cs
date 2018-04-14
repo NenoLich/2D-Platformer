@@ -197,17 +197,17 @@ public class Boss : MonoBehaviour {
     {
         audioSource.clip = deathClip;
         audioSource.Play();
-        Destroy(gameObject, 2f);
-        Invoke("ReloadGame",3f);
-
         StopAllCoroutines();
+
+        StartCoroutine(EndGame());
         rigBody.velocity = Vector2.zero;
         rigBody.isKinematic = false;
     }
 
-    void ReloadGame()
+    IEnumerator EndGame()
     {
-        GameObject.Find("StartLevelSceneUI").gameObject.GetComponent<SceneController>().Defeat();
-        Time.timeScale = 0;
+        yield return new WaitForSeconds(2f);
+
+        GameObject.Find("StartLevelSceneUI").gameObject.GetComponent<SceneController>().ShowMenu("Victory"); 
     }
 }

@@ -5,24 +5,30 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour {
 
-	void Update ()
+    public bool menuIsActive=false;
+
+    private Pauser pauser;
+
+    private void Awake()
+    {
+        pauser = GameObject.Find("Pauser").GetComponent<Pauser>();
+    }
+
+    void Update ()
     {
         if (Input.GetButtonDown("Cancel"))
         {
-            transform.Find("Pause").gameObject.SetActive(true);
-            Time.timeScale = 0;
+            ShowMenu("Pause");
         }
 	}
 
-    public void Defeat()
+    public void ShowMenu(string panel)
     {
-        transform.Find("Defeat").gameObject.SetActive(true);
-        Time.timeScale = 0;
-    }
-
-    public void Victory()
-    {
-        transform.Find("Victory").gameObject.SetActive(true);
-        Time.timeScale = 0;
+        if (!menuIsActive)
+        {
+            transform.Find(panel).gameObject.SetActive(true);
+            menuIsActive = true;
+            pauser.Pause();
+        }
     }
 }
