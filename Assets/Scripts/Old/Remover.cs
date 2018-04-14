@@ -42,7 +42,7 @@ public class Remover : MonoBehaviour
 	{
 		// ... pause briefly
 		yield return new WaitForSeconds(2);
-		// ... and then reload the level.
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
-	}
+        // ... and then reload the level.
+        GameObject.Find("StartLevelSceneUI").gameObject.GetComponent<SceneController>().Defeat(); 
+    }
 }

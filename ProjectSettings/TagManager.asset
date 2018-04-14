@@ -15,6 +15,7 @@ TagManager:
   - HealthBar
   - Trap
   - Boss
+  - Settings
   layers:
   - Default
   - TransparentFX

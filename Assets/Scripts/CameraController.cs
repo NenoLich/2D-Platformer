@@ -12,10 +12,12 @@ public class CameraController : MonoBehaviour
     public Vector2 minXAndY;
 
     private Transform player;
+    private Settings settings;
 
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        settings = GameObject.FindGameObjectWithTag("Settings").GetComponent<Settings>();
     }
 
     bool CheckXMargin()
@@ -32,6 +34,7 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate()
     {
+        AudioListener.volume = settings.volume;
         TrackPlayer();
     }
 
