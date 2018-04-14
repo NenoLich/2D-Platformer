@@ -7,7 +7,10 @@ public class NewGameButton : MonoBehaviour {
 
     public void NewGameButtonClick()
     {
-        GameObject.Find("Pauser").GetComponent<Pauser>().Pause();
+        GameObject pauser = GameObject.Find("Pauser");
+        if (pauser!=null)
+            pauser.GetComponent<Pauser>().Pause();
+
         SceneManager.LoadScene("StartLevel");
     }
 }

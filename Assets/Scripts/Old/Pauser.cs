@@ -11,7 +11,7 @@ public class Pauser : MonoBehaviour
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        postProcProf = new PostProcessingProfile();
+        postProcProf = ScriptableObject.CreateInstance("PostProcessingProfile") as PostProcessingProfile; 
     }
 
     public void Pause()
@@ -25,22 +25,5 @@ public class Pauser : MonoBehaviour
             player.GetComponent<PlayerAttack>().enabled = !player.GetComponent<PlayerAttack>().enabled;
 
         paused = !paused;
-
-
-        //if (paused)
-        //{
-        //    Time.timeScale = 1;
-        //    paused = !paused;
-        //    if (playerAttack.enabled==false)
-        //        playerAttack.enabled = true;
-        //}
-
-        //else
-        //{
-        //    Time.timeScale = 0;
-        //    paused = !paused;
-        //    if (playerAttack.enabled == true)
-        //        playerAttack.enabled = false;
-        //}
     }
 }

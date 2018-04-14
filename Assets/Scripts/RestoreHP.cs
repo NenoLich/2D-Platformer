@@ -9,7 +9,7 @@ public class RestoreHP : MonoBehaviour {
         if (collision.tag=="Player")
         {
             collision.GetComponent<PlayerHealth>().Restore();
-            GetComponent<BoxCollider2D>().enabled = false;
+            Destroy(gameObject);
         }
     }
 }
