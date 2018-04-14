@@ -9,7 +9,20 @@ public class SceneController : MonoBehaviour {
     {
         if (Input.GetButtonDown("Cancel"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            transform.Find("Pause").gameObject.SetActive(true);
+            Time.timeScale = 0;
         }
 	}
+
+    public void Defeat()
+    {
+        transform.Find("Defeat").gameObject.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void Victory()
+    {
+        transform.Find("Victory").gameObject.SetActive(true);
+        Time.timeScale = 0;
+    }
 }

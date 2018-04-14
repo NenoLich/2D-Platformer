@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour {
     public GUIStyle healthSliderStyle;
     public GUIStyle healthThumbStyle;
     public GUIStyle healthSliderBackgroundStyle;
+    public GameObject hat;
 
     private SpriteRenderer spriteRenderer;
     private Texture healthSliderBackgroundTexture;
@@ -24,6 +25,12 @@ public class UIManager : MonoBehaviour {
         maxHealth = playerHealth.maxHealth;
     }
 
+    private void Update()
+    {
+        if (playerHealth.health==0)
+            onDeath();
+    }
+
     private void OnGUI()
     {
         health = playerHealth.health;
@@ -35,5 +42,11 @@ public class UIManager : MonoBehaviour {
             sliderRect.width - sliderRect.width * health / maxHealth - thumbSize+thumbSize * health / maxHealth, sliderRect.height),
             healthSliderBackgroundTexture, healthSliderBackgroundStyle);
         }
+    }
+
+    public void onDeath()
+    {
+        enabled = false;
+        hat.SetActive(true);
     }
 }

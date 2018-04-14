@@ -21,7 +21,7 @@ public class Spawner : MonoBehaviour
         GameObject enemy = Instantiate(enemies[enemyIndex], transform.position, transform.rotation);
         if (flip)
         {
-            enemy.GetComponent<Enemy>().Flip();
+            enemy.GetComponent<EnemyHealth>().Flip();
         }
 
 		foreach(ParticleSystem p in GetComponentsInChildren<ParticleSystem>())
